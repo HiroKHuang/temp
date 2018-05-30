@@ -1,6 +1,7 @@
 class BaseConfig(object):
     """配置基类"""
-    SECRETE_KEY = "Hiro_Huang"
+    SECRET_KEY = "Hiro_Huang"
+    INDEX_PER_PAGE = 9
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True

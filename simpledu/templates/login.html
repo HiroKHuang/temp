@@ -1,23 +1,13 @@
 {% extends "base.html" %} 
+{% from "macros.html" import render_form %}
 
 {% block title %}
 Login
 {% endblock %}
 
 {% block body %}
-  <h2>登录</h2>
-  <form action="{{ url_for('front.login') }}" method="post">
-    {{ form.csrf_token }}
-    <div class="form-group">
-      {{ form.email.label }}{{ form.email(class='form-control') }}
-    </div>
-
-    <div class="checkbox">
-      <label> 
-        {{ form.remember_me() }} {{ form.remember_me.label.txt }}
-      </label>
-    </div>
-    {{ form.submit(class="btn btn-primary")}}
-  </form>
-<h1>Login Page</h1>
+  <div class="form">
+    <h2>登录</h2>
+    {{ render_form(form, url_for('front.login')) }}
+  </div>
 {% endblock %}
