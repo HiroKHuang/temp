@@ -43,7 +43,7 @@ class User(Base, UserMixin):
     
     @property
     def is_admin(self):
-        return self.role == self.ROLE__ADMIN
+        return self.role == self.ROLE_ADMIN
 
     @property
     def is_staff(self):
@@ -80,3 +80,9 @@ class Chapter(Base):
 
     def __repr__(self):
         return '<Chapter:{}>'.format(self.name)
+
+class Live(Base):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), unique=True, index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete=('SET NULL')))
+    user = db.relationship('User', uselist=False)
